@@ -1,6 +1,6 @@
 import sys
-from iceconnect import *
-#from IcelandInfo_LATEST.Python.iceconnect import *
+#from iceconnect import *
+from IcelandInfo_LATEST.Python.iceconnect import *
 
 def valmynd():
     running = True
@@ -103,7 +103,7 @@ def valmynd():
                     print(places.get_place(id))
 
                 elif (crud == 3):
-                    #Garðabaer, höfuðborgarsvaedid, 15000, https://gardabaer.is/
+                    #10 ,Garðabaer, höfuðborgarsvaedid, 15000, https://gardabaer.is/
                     print("Update place(put it all in ONE! line, no \"):[ID] [NAME], [REGION], [POPULATION], [WEB]")
                     p = input("Type here: ")
                     plist = [y.strip() for y in p.split(',')]
@@ -114,7 +114,10 @@ def valmynd():
                     p = places.get_place(id)
                     places.delete_place(id)
                 elif (crud == 5):
-                    print(places.get_place_list())
+                    stadir_listi = places.get_place_list()
+                    print("{: <10} {:20} {:20} {:40}".format("ID", "Staður", "Svæði", "Vefsíða"))
+                    for stadur in stadir_listi:
+                        print("{: <10} {:20} {:20} {:40}".format(stadur[0], stadur[1], stadur[2], stadur[3]))
                 elif (crud == 6):
                     inside = False
                 else:
